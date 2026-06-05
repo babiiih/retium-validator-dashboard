@@ -23,10 +23,11 @@ export default function ValidatorsPage() {
       .filter((v) => status === "ALL" || v.status === status)
       .filter((v) => v.address.toLowerCase().includes(query.toLowerCase()))
       .sort((a, b) => {
-  const av = sort === "joinedAt" ? new Date(a.joinedAt).getTime() : (a[sort] as number);
-  const bv = sort === "joinedAt" ? new Date(b.joinedAt).getTime() : (b[sort] as number);
-  return dir === "desc" ? bv - av : av - bv;
-});
+        const av = sort === "joinedAt" ? new Date(a.joinedAt).getTime() : (a[sort] as number);
+        const bv = sort === "joinedAt" ? new Date(b.joinedAt).getTime() : (b[sort] as number);
+        return dir === "desc" ? bv - av : av - bv;
+      });
+  }, [query, role, status, sort, dir]);
 
   return (
     <div className="space-y-6">
